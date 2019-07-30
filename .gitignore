@@ -1,0 +1,13 @@
+# Credentials
+secret/
+analyticsreporting.dat
+
+# System / Language folders
+__pycache__/
+.vscode/
+.DS_Store
+
+# Others
+test.py
+external_data/
+*.csv
