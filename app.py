@@ -5,7 +5,6 @@ from secret.private import client_id, client_secret, redirect_uri, access_code, 
 from config.initialize_analytics import initialize_analyticsreporting
 from components.to_df import response_to_df
 
-from queries.time_series_landing import request_body
 from query import request
 #from components.analyse.correlation.cross_correlation import analyse as analysis
 
@@ -26,7 +25,8 @@ def main():
     return date_list
 
   ## Get response
-  dates = generateDateRange(2019,6,1,60)
+  # dates = generateDateRange(2019,7,30,242)
+  dates=['2019-07-05']
   
   ## Concatena dataframe iterando rango de fechas
   df_full = pd.DataFrame()
@@ -35,10 +35,13 @@ def main():
     response = get_report(config,d,d)
     ## Convert response to dataframe
     df = response_to_df(response)
+    ## Se adjunta columna de fecha
+    df['date'] = d
     df_full = pd.concat([df_full,df])
-  ## OUTPUTVisualise Dataframe 
   return df_full
+  
 def dailyBatch():
   a = main()
-  a.to_csv('out.csv')
+  print(a)
+  a.to_csv('out.csv',index=False)
 dailyBatch()

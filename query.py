@@ -1,5 +1,4 @@
 from secret.private import VIEW_ID
-from settings import config
 
 def request(date_start,date_end):
     return {
@@ -20,6 +19,6 @@ def request(date_start,date_end):
                 ]
               }
             ],
-          "pageSize":"10000"
+          "pageSize":"20000"
         }]
       }
